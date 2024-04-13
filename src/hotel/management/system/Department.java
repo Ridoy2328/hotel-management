@@ -12,20 +12,17 @@ public class Department extends JFrame implements ActionListener {
     JTable table;
     JButton back;
 
-   Department () {
+    Department() {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
-
-        JLabel  l1 = new JLabel("Department");
-       l1.setBounds(180, 10, 100, 20);
+        JLabel l1 = new JLabel("Department");
+        l1.setBounds(180, 10, 100, 20);
         add(l1);
 
         JLabel l2 = new JLabel("Budget");
         l2.setBounds(420, 10, 100, 20);
         add(l2);
-
-        
 
         table = new JTable();
         table.setBounds(0, 50, 700, 350);
