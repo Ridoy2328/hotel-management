@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Reception extends JFrame implements ActionListener {
-    JButton newCustomer, rooms, department;
+    JButton newCustomer, rooms, department, allEmployee, managerInfo, customers;
 
     Reception() {
         getContentPane().setBackground(Color.WHITE);
@@ -33,6 +33,27 @@ public class Reception extends JFrame implements ActionListener {
         department.addActionListener(this); // Added ActionListener
         add(department);
 
+        allEmployee = new JButton("All Employee");
+        allEmployee.setBounds(10, 150, 200, 30);
+        allEmployee.setBackground(Color.BLACK);
+        allEmployee.setForeground(Color.WHITE);
+        allEmployee.addActionListener(this);
+        add(allEmployee);
+
+        customers = new JButton("Customer Info");
+        customers.setBounds(10, 190, 200, 30);
+        customers.setBackground(Color.BLACK);
+        customers.setForeground(Color.WHITE);
+        customers.addActionListener(this);
+        add(customers);
+
+        managerInfo = new JButton("Manager Info");
+        managerInfo.setBounds(10, 230, 200, 30);
+        managerInfo.setBackground(Color.BLACK);
+        managerInfo.setForeground(Color.WHITE);
+        managerInfo.addActionListener(this);
+        add(managerInfo);
+
         // Other buttons...
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/fourth.jpg"));
@@ -51,9 +72,18 @@ public class Reception extends JFrame implements ActionListener {
         } else if (ae.getSource() == rooms) {
             setVisible(false);
             new Room();
-        } else if (ae.getSource() == department) { // Added department ActionListener
+        } else if (ae.getSource() == department) {
             setVisible(false);
             new Department();
+        } else if (ae.getSource() == allEmployee) {
+            setVisible(false);
+            new EmployeeInfo();
+        } else if (ae.getSource() == managerInfo) {
+            setVisible(false);
+            new ManagerInfo();
+        } else if (ae.getSource() == customers) {
+            setVisible(false);
+            new CustomerInfo();
         }
         // Handle other button actions...
     }
