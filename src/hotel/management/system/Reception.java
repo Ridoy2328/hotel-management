@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Reception extends JFrame implements ActionListener {
-    JButton newCustomer, rooms, department, allEmployee, managerInfo, customers;
+    JButton newCustomer, rooms, department, allEmployee, managerInfo, customers, searchRoom;
 
     Reception() {
         getContentPane().setBackground(Color.WHITE);
@@ -53,6 +53,13 @@ public class Reception extends JFrame implements ActionListener {
         managerInfo.setForeground(Color.WHITE);
         managerInfo.addActionListener(this);
         add(managerInfo);
+        
+        searchRoom = new JButton("Search Room");
+        searchRoom.setBounds(10, 430, 200, 30);
+        searchRoom.setBackground(Color.BLACK);
+        searchRoom.setForeground(Color.WHITE);
+        searchRoom.addActionListener(this);
+        add(searchRoom);
 
         // Other buttons...
 
@@ -84,6 +91,9 @@ public class Reception extends JFrame implements ActionListener {
         } else if (ae.getSource() == customers) {
             setVisible(false);
             new CustomerInfo();
+        } else if (ae.getSource() == searchRoom) {
+            setVisible(false);
+            new SearchRoom();
         }
         // Handle other button actions...
     }
