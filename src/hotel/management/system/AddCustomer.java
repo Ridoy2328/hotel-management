@@ -8,9 +8,9 @@ import java.awt.event.*;
 
 public class AddCustomer extends JFrame implements ActionListener {
 
-    JComboBox<String> comboid;
+    JComboBox comboid;
     JTextField tfnumber, tfname, tfcountry, tfdeposit;
-    JRadioButton male, female;
+    JRadioButton rmale, rfemale;
     Choice croom;
     JLabel checkintime;
     JButton add, back;
@@ -30,8 +30,8 @@ public class AddCustomer extends JFrame implements ActionListener {
         lblid.setFont(new Font("Raleway", Font.PLAIN, 20));
         add(lblid);
 
-        String[] options = {"Adhar Card", "Passport", "Driving License", "Voter-id Card", "Ration Card"};
-        comboid = new JComboBox<>(options);
+        String options[] = {"Adhar Card", "Passport", "Driving License", "Voter-id Card", "Ration Card"};
+        comboid = new JComboBox(options);
         comboid.setBounds(200, 80, 150, 25);
         comboid.setBackground(Color.WHITE);
         add(comboid);
@@ -45,7 +45,7 @@ public class AddCustomer extends JFrame implements ActionListener {
         tfnumber.setBounds(200, 120, 150, 25);
         add(tfnumber);
 
-        JLabel lblname = new JLabel("NAME");
+        JLabel lblname = new JLabel("Name");
         lblname.setBounds(35, 160, 100, 20);
         lblname.setFont(new Font("Raleway", Font.PLAIN, 20));
         add(lblname);
@@ -59,19 +59,19 @@ public class AddCustomer extends JFrame implements ActionListener {
         lblgender.setFont(new Font("Raleway", Font.PLAIN, 20));
         add(lblgender);
 
-        male = new JRadioButton("Male");
-        male.setBackground(Color.WHITE);
-        male.setBounds(200, 200, 60, 25);
-        add(male);
+        rmale = new JRadioButton("Male");
+        rmale.setBackground(Color.WHITE);
+        rmale.setBounds(200, 200, 60, 25);
+        add(rmale);
 
-        female = new JRadioButton("Female");
-        female.setBackground(Color.WHITE);
-        female.setBounds(270, 200, 100, 25);
-        add(female);
+        rfemale = new JRadioButton("Female");
+        rfemale.setBackground(Color.WHITE);
+        rfemale.setBounds(270, 200, 100, 25);
+        add(rfemale);
 
         ButtonGroup genderGroup = new ButtonGroup();
-        genderGroup.add(male);
-        genderGroup.add(female);
+        genderGroup.add(rmale);
+        genderGroup.add(rfemale);
 
         JLabel lblcountry = new JLabel("Country");
         lblcountry.setBounds(35, 240, 100, 20);
@@ -90,7 +90,7 @@ public class AddCustomer extends JFrame implements ActionListener {
         croom = new Choice();
         try {
             Conn conn = new Conn();
-            String query = "select * from room";
+            String query = "select * from room where availability = 'Available'";
             ResultSet rs = conn.s.executeQuery(query);
 
             while (rs.next()) {
@@ -112,7 +112,7 @@ public class AddCustomer extends JFrame implements ActionListener {
         Date date = new Date();
         checkintime = new JLabel("" + date);
         checkintime.setBounds(200, 320, 150, 25);
-        checkintime.setFont(new Font("Raleway", Font.PLAIN, 18));
+        checkintime.setFont(new Font("Raleway", Font.PLAIN, 16));
         add(checkintime);
 
         JLabel lbldeposit = new JLabel("Deposit");
@@ -154,15 +154,15 @@ public class AddCustomer extends JFrame implements ActionListener {
             String id = (String) comboid.getSelectedItem();
             String number = tfnumber.getText();
             String name = tfname.getText();
-            String gender = male.isSelected() ? "Male" : "Female";
+            String gender = rmale.isSelected() ? "Male" : "Female";
             String country = tfcountry.getText();
             String room = croom.getSelectedItem();
             String time = checkintime.getText();
             String deposit = tfdeposit.getText();
 
             try {
-                String query = "INSERT INTO customer VALUES('" + id + "','" + number + "','" + name + "','" + gender + "','" + country + "','" + room + "','" + time + "','" + deposit + "')";
-                String query2 = "UPDATE room SET availability = 'occupied' WHERE roomnumber = '" + room + "'";
+                String query = "insert into customer values('" + id + "','" + number + "','" + name + "','" + gender + "','" + country + "','" + room + "','" + time + "','" + deposit + "')";
+                String query2 = "update room set availability = 'Occupied' where roomnumber = '" + room + "'";
                 Conn conn = new Conn();
                 conn.s.executeUpdate(query);
                 conn.s.executeUpdate(query2);
