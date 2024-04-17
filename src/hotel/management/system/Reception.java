@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Reception extends JFrame implements ActionListener {
-    JButton newCustomer, rooms, department, allEmployee, managerInfo,customers, searchRoom;
+    JButton newCustomer, rooms, department, allEmployee, managerInfo,customers, searchRoom,update,roomStatus,pickup,checkout,logout;
     Reception(){
             getContentPane().setBackground(Color.WHITE);
 		
@@ -59,28 +59,32 @@ public class Reception extends JFrame implements ActionListener {
                 managerInfo.addActionListener(this);
 		add(managerInfo);
 		
-		JButton checkout = new JButton("Check Out");
+		checkout = new JButton("Check Out");
 		checkout.setBounds(10, 270, 200, 30);
                 checkout.setBackground(Color.BLACK);
                 checkout.setForeground(Color.WHITE);
+                checkout.addActionListener(this);
                 add(checkout);
 		
-		JButton update = new JButton("Update Check Status");
+		update = new JButton("Update Check Status");
 		update.setBounds(10, 310, 200, 30);
                 update.setBackground(Color.BLACK);
                 update.setForeground(Color.WHITE);
+                update.addActionListener(this);
 		add(update);
 		
-		JButton roomStatus = new JButton("Update Room Status");
+		roomStatus = new JButton("Update Room Status");
 		roomStatus.setBounds(10, 350, 200, 30);
                 roomStatus.setBackground(Color.BLACK);
                 roomStatus.setForeground(Color.WHITE);
+                roomStatus.addActionListener(this);
 		add(roomStatus);
 		
-                JButton pickup = new JButton("Pick-up Service");
+                pickup = new JButton("Pick-up Service");
 		pickup.setBounds(10, 390, 200, 30);
                 pickup.setBackground(Color.BLACK);
                 pickup.setForeground(Color.WHITE);
+                pickup.addActionListener(this);
 		add(pickup);
 		
 		searchRoom = new JButton("Search Room");
@@ -90,10 +94,11 @@ public class Reception extends JFrame implements ActionListener {
                 searchRoom.addActionListener(this);
 		add(searchRoom);
 
-		JButton logout = new JButton("Log Out");
+		logout = new JButton("Log Out");
 		logout.setBounds(10, 470, 200, 30);
                 logout.setBackground(Color.BLACK);
                 logout.setForeground(Color.WHITE);
+                logout.addActionListener(this);
 		add(logout);
                 
                 setVisible(true);
@@ -121,6 +126,21 @@ public class Reception extends JFrame implements ActionListener {
         }else if(ae.getSource() == searchRoom){
             setVisible(false);
             new SearchRoom();
+        }else if(ae.getSource() == update){
+            setVisible(false);
+            new UpdateCheck();
+        }else if(ae.getSource() == roomStatus){
+            setVisible(false);
+            new UpdateRoom();
+        }else if(ae.getSource() == pickup){
+            setVisible(false);
+            new Pickup();
+        }else if(ae.getSource() == checkout){
+            setVisible(false);
+            new Checkout();
+        }else if(ae.getSource() == logout){
+            setVisible(false);
+           
         }
     }
     
