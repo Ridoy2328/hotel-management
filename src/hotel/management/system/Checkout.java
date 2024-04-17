@@ -105,8 +105,7 @@ public class Checkout extends JFrame implements ActionListener{
  public void actionPerformed(ActionEvent ae){ 
  if(ae.getSource() == checkout){ 
  String query1 = "delete from customer where number = '"+ccustomer.getSelectedItem()+"'"; 
- String query2 = "update room set availability = 'Available' where roomnumber = 
-'"+lblroomnumber.getText()+"'"; 
+ String query2 = "update room set availability = 'Available' where roomnumber = '"+lblroomnumber.getText()+"'"; 
  try{ 
  Conn c = new Conn(); 
  c.s.executeUpdate(query1); 

@@ -122,8 +122,7 @@ public class UpdateCheck extends JFrame implements ActionListener{
  tfcheckin.setText(rs.getString("checkintime")); 
  tfpaid.setText(rs.getString("deposit")); 
  } 
- ResultSet rs2 = c.s.executeQuery("select * from room where roomnumber = 
-'"+tfroom.getText()+"'"); 
+ ResultSet rs2 = c.s.executeQuery("select * from room where roomnumber = '"+tfroom.getText()+"'"); 
  while(rs2.next()){ 
  String price = rs2.getString("price"); 
  int amountPaid = Integer.parseInt(price)- Integer.parseInt(tfpaid.getText()); 
@@ -141,8 +140,7 @@ public class UpdateCheck extends JFrame implements ActionListener{
  
  try{ 
  Conn c = new Conn(); 
- c.s.executeUpdate("update customer set room = '"+room+"', name = '"+name+"', chekintime = 
-'"+checkin+"', deposit = '"+deposit+"' where roomnumber = '"+room+"'"); 
+ c.s.executeUpdate("update customer set room = '"+room+"', name = '"+name+"', chekintime = '"+checkin+"', deposit = '"+deposit+"' where roomnumber = '"+room+"'"); 
  
  JOptionPane.showMessageDialog(null, "Data Updated Successfully"); 
  setVisible(false); 

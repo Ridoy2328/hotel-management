@@ -105,8 +105,7 @@ public class UpdateRoom extends JFrame implements ActionListener{
  while (rs.next()){ 
  tfroom.setText(rs.getString("room")); 
  } 
- ResultSet rs2 = c.s.executeQuery("select * from room where roomnumber = 
-'"+tfroom.getText()+"'"); 
+ ResultSet rs2 = c.s.executeQuery("select * from room where roomnumber = '"+tfroom.getText()+"'"); 
  while(rs2.next()){ 
  tfavailable.setText(rs2.getString("availability")); 
  tfstatus.setText(rs2.getString("cleaning_status")); 
@@ -122,8 +121,7 @@ public class UpdateRoom extends JFrame implements ActionListener{
  
  try{ 
  Conn c = new Conn(); 
- c.s.executeUpdate("update room set availability = '"+available+"', cleaning_status = '"+status+"' 
-where roomnumber = '"+room+"'"); 
+ c.s.executeUpdate("update room set availability = '"+available+"', cleaning_status = '"+status+"' where roomnumber = '"+room+"'"); 
  
  JOptionPane.showMessageDialog(null, "Data Updated Successfully"); 
  setVisible(false); 
